@@ -9,6 +9,8 @@ out="$(cd "$out" && pwd)"
 for dir in skills/*/; do
   name="$(basename "$dir")"
   [ -f "$dir/SKILL.md" ] || { echo "skip: $name (SKILL.md なし)"; continue; }
-  (cd skills && zip -qr "$out/$name.zip" "$name" -x '*.DS_Store')
+  # -X removes host-specific extra fields (UID/GID, extended attributes, etc.)
+  # so shared archives do not leak local-machine metadata.
+  (cd skills && zip -Xqr "$out/$name.zip" "$name" -x '*.DS_Store')
   echo "packed: $out/$name.zip"
 done
