@@ -1,0 +1,22 @@
+{
+  "name": "takokurage-skills",
+  "owner": {
+    "name": "qrbathbomb-sketch"
+  },
+  "metadata": {
+    "description": "ClaudeとChatGPTで共用する自作スキル集"
+  },
+  "plugins": [
+    {
+      "name": "takokurage",
+      "description": "自作スキル一式(skills/ 以下)",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/build-two-event-case-study-slides",
+        "./skills/natural-making-slide",
+        "./skills/event-time-schedule"
+      ]
+    }
+  ]
+}
