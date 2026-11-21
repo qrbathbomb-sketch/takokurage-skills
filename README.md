@@ -62,3 +62,25 @@ skills/
 | build-two-event-case-study-slides | 1枚に2イベントを並べる実績スライド(pptx)を参照デッキの体裁どおりに作る |
 | natural-making-slide | パワポ資料（提案書・報告資料など）を作る・直すときの作成ルール |
 | event-time-schedule | イベントの施工・本番・撤去スケジュールをExcelの時間軸表で作り、ズレを自動チェック |
+
+## おすすめ外部スキル
+
+他者・他組織が公開しているスキルは、このリポジトリへコピーせず配布元から導入する。
+
+| スキル | 用途 | 配布元 |
+| --- | --- | --- |
+| pdf | PDFの読取・生成・レイアウト確認 | [OpenAI公式](https://github.com/openai/skills/tree/main/skills/.curated/pdf) |
+| slides | PDF・画像・既存資料から編集可能なPPTXを再構成 | [OpenAI公式（固定リビジョン）](https://github.com/openai/skills/tree/e6afb0d74cc75d220df2faf3dd6c635c2dc6a108/skills/.curated/slides) |
+
+Codexへの導入:
+
+```bash
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+  --repo openai/skills --path skills/.curated/pdf
+
+python3 "${CODEX_HOME:-$HOME/.codex}/skills/.system/skill-installer/scripts/install-skill-from-github.py" \
+  --repo openai/skills --ref e6afb0d74cc75d220df2faf3dd6c635c2dc6a108 \
+  --path skills/.curated/slides
+```
+
+導入後は新しいCodexセッションで `$pdf` または `$slides` を指定できる。PDFからPowerPointへ変換するときは、`$slides` にPDFを渡して「各ページを編集可能なPPTXとして再構成」と依頼する。
